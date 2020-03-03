@@ -40,4 +40,34 @@ object Main extends App {
 
   println(brokenKeyBoards(2))
 
+
+  def brokenKeysWhereAllAvailableKeysUsed(workingKeys: List[Char]): String= {
+    val bufferedSource = Source.fromFile("/home/qa-admin/Downloads/words.txt")
+    var longestWord = ""
+    var wordsWhereAllKeysUsed = new ListBuffer[String]
+    for (line <- bufferedSource.getLines) {
+      var wordCanBeSpelled = true
+      val lettersInWord = line.toSet
+      if (lettersInWord == workingKeys.toSet) {
+        lettersInWord foreach(letter => {
+          if (!workingKeys.contains(letter)) {
+            wordCanBeSpelled = false
+          }
+        })
+        if (wordCanBeSpelled) {
+          wordsWhereAllKeysUsed += line
+        }
+        if (line.length > longestWord.length && wordCanBeSpelled) {
+          longestWord = line
+        }
+      }
+    }
+
+    bufferedSource.close
+    println(wordsWhereAllKeysUsed)
+    longestWord
+  }
+
+
+
 }

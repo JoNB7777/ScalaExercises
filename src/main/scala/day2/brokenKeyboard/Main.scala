@@ -68,6 +68,20 @@ object Main extends App {
     longestWord
   }
 
+  def brokenKeyBoards2:  List[String] = {
+    val numOfKeyboards = scala.io.StdIn.readLine("What is the number of keyboards?").toInt
+    var words = new ListBuffer[String]
+    for (i <- 0 to (numOfKeyboards - 1) by 1) {
+      val keyboard = scala.io.StdIn.readLine("What is your keyboard?").toList
+      words += brokenKeyboard(keyboard)
+    }
+    val listOfWords = words.toList
+    listOfWords
+
+  }
+
+  brokenKeyBoards2
+
 
 
 }

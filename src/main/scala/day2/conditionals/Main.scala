@@ -12,6 +12,4 @@ object Main extends App {
     result
   }
 
-  println(conditionalOperatorsFunction(7,7, true))
-
 }

@@ -35,7 +35,7 @@ object Main extends App {
     myStringBuffer.append(alreadyGuessedLetters)
     for (i <- 0 to alreadyGuessedLetters.length - 1) {
       if (letterOccurrences.contains(i)) {
-        myStringBuffer[i].replace(guessedLetter)
+        myStringBuffer[i].replace(guessedLetter)  // this line doesn't work yet
       }
     }
     val result = myStringBuffer.toString
@@ -57,6 +57,8 @@ object Main extends App {
   def playHangman(maxGuesses: Int): Unit = {
     val thisSolution = chooseWord(testWordList)
     var guessesUsed = 0
+    var playerHasWon = false
+    var playerHasLost = false
     var guessedSoFar = displayNumberOfLetters(thisSolution)
     println(guessedSoFar)
     var gameNotOver = true
@@ -71,11 +73,21 @@ object Main extends App {
       }
       if (guessedSoFar == thisSolution) {
         gameNotOver = false
+        playerHasWon = true
       } else if (guessesUsed == maxGuesses) {
         gameNotOver = false
+        playerHasLost = true
       }
     }
+    if (playerHasWon) {
+      println("Congratulations you have won!")
+    } else if (playerHasLost) {
+      println("You have lost! Better luck next time.")
+    }
   }
+
+
+  playHangman(10)
 
 
 }

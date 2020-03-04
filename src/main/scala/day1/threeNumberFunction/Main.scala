@@ -1,6 +1,6 @@
-package day1.function
+package day1.threeNumberFunction
 
-object ThreeNumberFunction extends App {
+object Main extends App {
 
   def numberFunction(num1: Int, num2: Int, num3: Int): Int = {
     var maxNumber = math.max(num1, math.max(num2, num3))
@@ -13,6 +13,11 @@ object ThreeNumberFunction extends App {
     }
     result *= maxNumber
     result
+  }
+
+  def exampleSolution(num1: Int, num2: Int, num3: Int) ={
+    val nums = List(num1, num2, num3).sorted
+    (nums(0) + nums(1)) * nums(2)
   }
 
 }

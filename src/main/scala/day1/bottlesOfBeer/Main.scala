@@ -1,6 +1,6 @@
 package day1.bottlesOfBeer
 
-object BottlesOfBeer extends App {
+object Main extends App {
 
   def bottlesOfBeer(bottles: Int): Unit = {
     for (i <- bottles to 0 by -1) {

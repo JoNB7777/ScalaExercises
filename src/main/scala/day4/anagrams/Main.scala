@@ -33,46 +33,33 @@ object Main extends App {
 
   def findNumberOfAnagrams(myString: String, myFile: String): Int = {
     val wordArray = readFile(myFile)
-    val inputSorted = sortStringAlphabetically(myString)
     var anagramCounter = -1
     for (i <- 0 until wordArray.length) {
-      if (sortStringAlphabetically(wordArray(i)) == inputSorted) {
+      if (checkIfAnagram(myString, wordArray(i))) {
         anagramCounter += 1
       }
     }
     anagramCounter
   }
 
-//  def findWordWithMostAnagrams(filename: String): List[Tuple] = {
-//    val words = readFile(filename)
-//    var wordWithMostAnagrams = ""
+  def checkIfAnagram(str1: String, str2: String): Boolean = {
+    sortStringAlphabetically(str1) == sortStringAlphabetically(str2)
+  }
+
+//  def findWordWithMostAnagrams(filename: String): (List[String], Int) = {
+//    var solutionList = new ListBuffer[String]
 //    var numberOfAnagrams = 0
-//    var solutionTuple = (wordWithMostAnagrams, numberOfAnagrams)
-//    var solutionList = new ListBuffer[Tuple]
-//    solutionList += solutionTuple
+//    var words = readFile(filename)
 //    words foreach(word => {
-//      if (findNumberOfAnagrams(word, filename)[1] > numberOfAnagrams) {
-//        wordWithMostAnagrams = word
-//        numberOfAnagrams = findNumberOfAnagrams(word, filename)[1]
-//        solutionTuple = (wordWithMostAnagrams, numberOfAnagrams)
+//      if (findNumberOfAnagrams(word, filename) > numberOfAnagrams || (findNumberOfAnagrams(word, filename) == numberOfAnagrams && word.length > solutionList(0))) {
 //        solutionList.clear()
-//        solutionList += solutionTuple
-//      } else if (findNumberOfAnagrams(word, filename)[1] == numberOfAnagrams && word.length > wordWithMostAnagrams.length) {
-//        wordWithMostAnagrams = word
-//        numberOfAnagrams = findNumberOfAnagrams(word, filename)[1]
-//        solutionTuple = (wordWithMostAnagrams, numberOfAnagrams)
-//        solutionList.clear()
-//        solutionList += solutionTuple
-//      } else if (findNumberOfAnagrams(word, filename)[1] == numberOfAnagrams && word.length == wordWithMostAnagrams.length) {
-//        wordWithMostAnagrams = word
-//        numberOfAnagrams = findNumberOfAnagrams(word, filename)[1]
-//        solutionTuple = (wordWithMostAnagrams, numberOfAnagrams)
-//        solutionList += solutionTuple
+//        solutionList += word
+//      } else if (findNumberOfAnagrams(word, filename) == numberOfAnagrams && word.length == solutionList(0)) {
+//        solutionList += word
 //      }
 //    })
-//    solutionList.toList
-//  }
+//    (solutionList.toList, numberOfAnagrams)
 //
-//  println(findWordWithMostAnagrams(file))
+//  }
 
 }

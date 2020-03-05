@@ -19,10 +19,20 @@ class LuhnAlgorithm {
   }
 
   def findCheckDigitOfNum(num: Long): Int = {
-    (num % 10).toInt
+    var checkDigit = 0L
+    var checkDigitNotFound = true
+    while (checkDigitNotFound) {
+      var numToCheck = num * 10 + checkDigit
+      if (checkValidityOfNumber(numToCheck)) {
+        checkDigitNotFound = false
+      } else {
+        checkDigit += 1L
+      }
+    }
+    checkDigit.toInt
   }
 
-  def checkValidityOfDigitList(digitList: List[Int], numOfDigits: Int, checkDigit: Int): Boolean = {
+  def checkValidityOfDigitList(digitList: List[Int], numOfDigits: Int): Boolean = {
     var indexOfCurrentDigit = 0
     var checkResult = 0
     for (i <- 0 until numOfDigits) {
@@ -37,9 +47,9 @@ class LuhnAlgorithm {
 
 
   def checkValidityOfNumber(numberToCheck: Long): Boolean = {
-    val checkDigit = findCheckDigitOfNum(numberToCheck)
+//    val checkDigit = findCheckDigitOfNum(numberToCheck)
     val (numberOfDigits, listOfDigits) = checkDigitsAndNumberOfDigits(numberToCheck)
-    checkValidityOfDigitList(listOfDigits, numberOfDigits, checkDigit)
+    checkValidityOfDigitList(listOfDigits, numberOfDigits)
   }
 
 }

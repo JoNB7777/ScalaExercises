@@ -42,7 +42,7 @@ class LuhnAlgorithm {
     var checkDigit = 0L
     var checkDigitNotFound = true
     while (checkDigitNotFound) {
-      var numToCheck = num * 10 + checkDigit
+      val numToCheck = num * 10 + checkDigit
       if (checkValidityOfNumber(numToCheck)) {
         checkDigitNotFound = false
       } else {

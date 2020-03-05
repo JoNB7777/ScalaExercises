@@ -6,5 +6,4 @@ object Main extends App {
   println(example.checkDigitsAndNumberOfDigits(324))
   println(example.findCheckDigitOfNum(324))
   println(example.checkValidityOfNumber(49927398716L))
-//  println((10L /2))
 }

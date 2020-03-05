@@ -21,8 +21,10 @@ object Main extends App {
     for (i <- 0 to solution.length -  1 by 1) {
       if (letterOccursAtIndex(solution, i, guessedLetter)) {
         placesLetterOccursIn += i
+        println(placesLetterOccursIn)
       }
     }
+    println(placesLetterOccursIn.toList)
     placesLetterOccursIn.toList
   }
 
@@ -31,15 +33,16 @@ object Main extends App {
   }
 
   def replaceAllOccurrencesOfLetter(letterOccurrences: List[Int], alreadyGuessedLetters: String, guessedLetter: String): String = {
-    var myStringBuffer = new StringBuffer()
-    myStringBuffer.append(alreadyGuessedLetters)
-    for (i <- 0 to alreadyGuessedLetters.length - 1) {
+//    var myStringBuffer = new StringBuffer()
+//    myStringBuffer.append(alreadyGuessedLetters)
+    var myString = alreadyGuessedLetters
+    for (i <- 0 to alreadyGuessedLetters.length - 1 by 2) {
       if (letterOccurrences.contains(i)) {
         //myStringBuffer[i].replace(guessedLetter)  //this line doesn't work yet
-        myStringBuffer.replace(2 *i, 2 *i+1, guessedLetter)
+        myString = myString.replace(myString.charAt(i), guessedLetter.head)
       }
     }
-    val result = myStringBuffer.toString
+    val result = myString
     result
   }
 
@@ -73,6 +76,7 @@ object Main extends App {
       if (guessContained) {
         val occurenceList = findAllOccurrencesOfLetter(guessedSoFar, thisSolution, nextGuess)
         val newGuessedSoFar = replaceAllOccurrencesOfLetter(occurenceList, guessedSoFar, nextGuess)
+        println(newGuessedSoFar)
         guessedSoFar = newGuessedSoFar
       } else {
         guessesUsed += 1

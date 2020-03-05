@@ -21,7 +21,7 @@ object Main extends App {
   }
 
   def iteration2Recursive(myString: String, num: Int): Unit = {
-    var result = myString * num
+    val result = myString * num
     def innerRecursion(innerRecursionNum: Int): Unit = {
       if (innerRecursionNum == 1) {
         println(result)

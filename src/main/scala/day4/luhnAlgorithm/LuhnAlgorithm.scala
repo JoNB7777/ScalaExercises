@@ -20,7 +20,6 @@ class LuhnAlgorithm {
 
 
   def checkValidityOfDigitList(digitList: List[Int], numOfDigits: Int): Boolean = {
-    var indexOfCurrentDigit = 0
     var checkResult = 0
     for (i <- 0 until numOfDigits) {
       if (i % 2 == 0) {

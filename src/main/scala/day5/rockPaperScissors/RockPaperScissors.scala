@@ -2,33 +2,31 @@ package day5.rockPaperScissors
 
 import scala.io.StdIn.readLine
 import scala.util.Random
-import AvailableOptions.Value
 
 
 class RockPaperScissors {
 
-  def determineWhoWins(firstPlayerInput: AvailableOptions.Value, secondPlayerInput: AvailableOptions.Value) = (firstPlayerInput, secondPlayerInput) match {
-    case(AvailableOptions.PAPER, AvailableOptions.ROCK) => "Player1"
-    case(AvailableOptions.ROCK, AvailableOptions.PAPER) => "Player2"
-    case(AvailableOptions.ROCK, AvailableOptions.SCISSORS) => "Player1"
-    case(AvailableOptions.SCISSORS, AvailableOptions.ROCK) => "Player2"
-    case(AvailableOptions.ROCK, AvailableOptions.LIZARD) => "Player1"
-    case(AvailableOptions.LIZARD, AvailableOptions.ROCK) => "Player2"
-    case(AvailableOptions.ROCK, AvailableOptions.SPOCK) => "Player2"
-    case(AvailableOptions.SPOCK, AvailableOptions.ROCK) => "Player1"
-    case(AvailableOptions.PAPER, AvailableOptions.SCISSORS) => "Player2"
-    case(AvailableOptions.SCISSORS, AvailableOptions.PAPER) => "Player1"
-    case(AvailableOptions.PAPER, AvailableOptions.LIZARD) => "Player2"
-    case(AvailableOptions.LIZARD, AvailableOptions.PAPER) => "Player1"
-    case(AvailableOptions.PAPER, AvailableOptions.SPOCK) => "Player1"
-    case(AvailableOptions.SPOCK, AvailableOptions.PAPER) => "Player2"
-    case(AvailableOptions.SCISSORS, AvailableOptions.LIZARD) => "Player1"
-    case(AvailableOptions.LIZARD, AvailableOptions.SCISSORS) => "Player2"
-    case(AvailableOptions.SCISSORS, AvailableOptions.SPOCK) => "Player2"
-    case(AvailableOptions.SPOCK, AvailableOptions.SCISSORS) => "Player1"
-    case(AvailableOptions.LIZARD, AvailableOptions.SPOCK) => "Player1"
-    case(AvailableOptions.SPOCK, AvailableOptions.LIZARD) => "Player2"
-    case _ => "Draw"
+  def determineWhoWins(firstPlayerInput: AvailableOptions.Value, secondPlayerInput: AvailableOptions.Value) = firstPlayerInput match {
+    case (AvailableOptions.ROCK) => {
+      val decider = new DetermineWinner
+      decider.rockPlays(secondPlayerInput)
+    }
+    case (AvailableOptions.LIZARD) => {
+      val decider = new DetermineWinner
+      decider.lizardPlays(secondPlayerInput)
+    }
+    case (AvailableOptions.SPOCK) => {
+      val decider = new DetermineWinner
+      decider.spockPlays(secondPlayerInput)
+    }
+    case (AvailableOptions.SCISSORS) => {
+      val decider = new DetermineWinner
+      decider.scissorsPlays(secondPlayerInput)
+    }
+    case (AvailableOptions.PAPER) => {
+      val decider = new DetermineWinner
+      decider.paperPlays(secondPlayerInput)
+    }
   }
 
   def askForPlayerInput: Int = {

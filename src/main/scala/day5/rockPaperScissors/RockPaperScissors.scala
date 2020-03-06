@@ -34,6 +34,7 @@ class RockPaperScissors {
     case(SPOCK, SCISSORS) => "Player1"
     case(LIZARD, SPOCK) => "Player1"
     case(SPOCK, LIZARD) => "Player2"
+    case _ => "Draw"
   }
 
   def askForPlayerInput: Int = {
@@ -54,7 +55,17 @@ class RockPaperScissors {
   }
 
   def basicAIGame: Unit = {
-
+    val computerInput = takeInput(randomAIChoice)
+    val playerInput = takeInput(askForPlayerInput)
+    println(s"Computer chose $computerInput and you chose $playerInput")
+    val result = determineWhoWins(computerInput, playerInput)
+    if (result == "Player1") {
+      println("Computer wins")
+    } else if(result == "Player2") {
+      println("You win!")
+    } else {
+      println("Draw")
+    }
   }
 
 }

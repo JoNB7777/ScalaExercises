@@ -68,4 +68,24 @@ class RockPaperScissors {
     }
   }
 
+  def askIfPlayerWantsToPlayAnotherGame: Boolean = {
+    val answer = readLine("Do you want to play again. Press y for yes or n for no.")
+    if (answer.head == 'y') {
+      true
+    } else if (answer.head == 'n') {
+      false
+    } else {
+      println("please enter y or n")
+      askIfPlayerWantsToPlayAnotherGame
+    }
+  }
+
+  def playBasicAIGames: Unit = {
+    var playerWantsToPlay = true
+    while (playerWantsToPlay) {
+      basicAIGame
+      playerWantsToPlay = askIfPlayerWantsToPlayAnotherGame
+    }
+  }
+
 }

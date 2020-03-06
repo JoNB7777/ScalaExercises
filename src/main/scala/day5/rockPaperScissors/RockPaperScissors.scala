@@ -50,12 +50,12 @@ class RockPaperScissors {
     case _ => takeInput(askForPlayerInput)
   }
 
-  def randomAIChoice: Int ={
-    Random.between(1, 6)
+  def randomAIChoice(maxNum: Int): Int ={
+    Random.between(1, maxNum)
   }
 
   def basicAIGame: Unit = {
-    val computerInput = takeInput(randomAIChoice)
+    val computerInput = takeInput(randomAIChoice(6))
     val playerInput = takeInput(askForPlayerInput)
     println(s"Computer chose $computerInput and you chose $playerInput")
     val result = determineWhoWins(computerInput, playerInput)
@@ -87,5 +87,82 @@ class RockPaperScissors {
       playerWantsToPlay = askIfPlayerWantsToPlayAnotherGame
     }
   }
+
+//  def keepTrackOfPlayerChoices(recordedMoves: Array[Value]): Array[Value] = {
+//    val possibleReactions = new Array[Value](2 * recordedMoves.length)
+//    for (i<-0 until recordedMoves.length) {
+//      recordedMoves(i) match {
+//        case ROCK => {
+//          possibleReactions(i) = PAPER
+//          possibleReactions(i + recordedMoves.length) = SPOCK
+//        }
+//        case SCISSORS => {
+//          possibleReactions(i) = ROCK
+//          possibleReactions(i + recordedMoves.length) = SPOCK
+//        }
+//        case PAPER => {
+//          possibleReactions(i) = SCISSORS
+//          possibleReactions(i + recordedMoves.length) = LIZARD
+//        }
+//        case LIZARD => {
+//          possibleReactions(i) = ROCK
+//          possibleReactions(i + recordedMoves.length) = SCISSORS
+//        }
+//        case SPOCK => {
+//          possibleReactions(i) = LIZARD
+//          possibleReactions(i + recordedMoves.length) = PAPER
+//        }
+//      }
+//    }
+//    possibleReactions
+//  }
+//
+//  def recordMove(alreadyRecordedMoves: Array[Value], amountToRecord: Int, newMove: Value): Array[Value] = {
+//    if(alreadyRecordedMoves.length < amountToRecord) {
+//      val result = new Array[Value](alreadyRecordedMoves.length + 1)
+//      for (i <- 0 until  alreadyRecordedMoves.length) {
+//        result(i) = alreadyRecordedMoves(i)
+//      }
+//      result(alreadyRecordedMoves.length) = newMove
+//      result
+//    } else {
+//      for ( i<- 0 until alreadyRecordedMoves.length - 1) {
+//        alreadyRecordedMoves(i) = alreadyRecordedMoves(i + 1)
+//      }
+//      alreadyRecordedMoves(alreadyRecordedMoves.length - 1) = newMove
+//      alreadyRecordedMoves
+//    }
+//  }
+//
+//  def createOptionsForAI(reactions: Array[Value]): Array[Value] = {
+//    val result = new Array[Value](7 + reactions.length)
+//    result(0) = ROCK
+//    result(1) = PAPER
+//    result(2) = SCISSORS
+//    result(3) = LIZARD
+//    result(4) = SPOCK
+//    for (i <- 5 until result.length - 2 ) {
+//      result(i) = reactions(i - 5)
+//    }
+//    result(-1) = reactions(-1)
+//    result(-2) = reactions(-1)
+//    result
+//  }
+//
+//  def gameAIBasedOnUserChoices(moves: Array[Value], reactions: Array[Value], numToKeepTrackOf: Int): Unit = {
+//    val computerNumber = randomAIChoice(reactions.length)
+//    val computerInput = reactions(computerNumber)
+//    val playerInput = takeInput(askForPlayerInput)
+//    val aiOptions = createOptionsForAI(keepTrackOfPlayerChoices(recordMove(moves,numToKeepTrackOf, playerInput)))
+//    println(s"Computer chose $computerInput and you chose $playerInput")
+//    val result = determineWhoWins(computerInput, playerInput)
+//    if (result == "Player1") {
+//      println("Computer wins")
+//    } else if(result == "Player2") {
+//      println("You win!")
+//    } else {
+//      println("Draw")
+//    }
+//  }
 
 }

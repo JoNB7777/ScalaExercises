@@ -3,6 +3,7 @@ package day5.rockPaperScissors
 object Main extends App {
 
   val example = new RockPaperScissors
-  example.playBasicAIGames
+  val example2 = new GameCreator
+  example2.createGame(example)
 
 }

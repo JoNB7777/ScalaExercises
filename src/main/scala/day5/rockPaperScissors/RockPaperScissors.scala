@@ -38,7 +38,7 @@ class RockPaperScissors {
   }
 
   def askForPlayerInput: Int = {
-    readLine("Please enter 1 for rock, 2 for paper, 3 for scissors, 4 for lizard, 5 for spock").toInt
+    readLine("Please enter 1 for rock, 2 for paper, 3 for scissors, 4 for lizard, 5 for spock\n").toInt
   }
 
   def takeInput(choice: Int): Value = choice match {

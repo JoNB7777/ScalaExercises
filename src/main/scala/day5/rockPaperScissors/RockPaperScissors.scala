@@ -1,6 +1,6 @@
 package day5.rockPaperScissors
 
-import java.awt.print.Paper
+import scala.io.StdIn.readLine
 
 class RockPaperScissors {
 
@@ -35,8 +35,7 @@ class RockPaperScissors {
   }
 
   def askForPlayerInput: Int = {
-    println("Please enter 1 for rock, 2 for paper, 3 for scissors, 4 for lizard, 5 for spock")
-
+    readLine("Please enter 1 for rock, 2 for paper, 3 for scissors, 4 for lizard, 5 for spock").toInt
   }
 
   def takePlayerInput(playerChoice: Int): availableOptions.Value = playerChoice match {

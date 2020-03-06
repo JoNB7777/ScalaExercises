@@ -12,7 +12,7 @@ class RockPaperScissors {
 
   import availableOptions._
 
-  def determineWhoWins(firstPlayerInput: availableOptions.Value, secondPlayerInput: availableOptions.Value) = (firstPlayerInput, secondPlayerInput) match {
+  def determineWhoWins(firstPlayerInput: Value, secondPlayerInput: Value) = (firstPlayerInput, secondPlayerInput) match {
     case(PAPER, ROCK) => "Player1"
     case(ROCK, PAPER) => "Player2"
     case(ROCK, SCISSORS) => "Player1"
@@ -39,7 +39,7 @@ class RockPaperScissors {
     readLine("Please enter 1 for rock, 2 for paper, 3 for scissors, 4 for lizard, 5 for spock").toInt
   }
 
-  def takePlayerInput(playerChoice: Int): availableOptions.Value = playerChoice match {
+  def takePlayerInput(playerChoice: Int): Value = playerChoice match {
     case 1 => availableOptions.ROCK
     case 2 => availableOptions.PAPER
     case 3 => availableOptions.SCISSORS

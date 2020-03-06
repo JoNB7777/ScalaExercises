@@ -2,38 +2,32 @@ package day5.rockPaperScissors
 
 import scala.io.StdIn.readLine
 import scala.util.Random
+import AvailableOptions.Value
 
 
 class RockPaperScissors {
 
-  object availableOptions extends Enumeration {
-    type Margin = Value
-    val ROCK, PAPER, SCISSORS, LIZARD, SPOCK = Value
-  }
-
-  import availableOptions._
-
-  def determineWhoWins(firstPlayerInput: Value, secondPlayerInput: Value) = (firstPlayerInput, secondPlayerInput) match {
-    case(PAPER, ROCK) => "Player1"
-    case(ROCK, PAPER) => "Player2"
-    case(ROCK, SCISSORS) => "Player1"
-    case(SCISSORS, ROCK) => "Player2"
-    case(ROCK, LIZARD) => "Player1"
-    case(LIZARD, ROCK) => "Player2"
-    case(ROCK, SPOCK) => "Player2"
-    case(SPOCK, ROCK) => "Player1"
-    case(PAPER, SCISSORS) => "Player2"
-    case(SCISSORS, PAPER) => "Player1"
-    case(PAPER, LIZARD) => "Player2"
-    case(LIZARD, PAPER) => "Player1"
-    case(PAPER, SPOCK) => "Player1"
-    case (SPOCK, PAPER) => "Player2"
-    case(SCISSORS, LIZARD) => "Player1"
-    case(LIZARD, SCISSORS) => "Player2"
-    case(SCISSORS, SPOCK) => "Player2"
-    case(SPOCK, SCISSORS) => "Player1"
-    case(LIZARD, SPOCK) => "Player1"
-    case(SPOCK, LIZARD) => "Player2"
+  def determineWhoWins(firstPlayerInput: AvailableOptions.Value, secondPlayerInput: AvailableOptions.Value) = (firstPlayerInput, secondPlayerInput) match {
+    case(AvailableOptions.PAPER, AvailableOptions.ROCK) => "Player1"
+    case(AvailableOptions.ROCK, AvailableOptions.PAPER) => "Player2"
+    case(AvailableOptions.ROCK, AvailableOptions.SCISSORS) => "Player1"
+    case(AvailableOptions.SCISSORS, AvailableOptions.ROCK) => "Player2"
+    case(AvailableOptions.ROCK, AvailableOptions.LIZARD) => "Player1"
+    case(AvailableOptions.LIZARD, AvailableOptions.ROCK) => "Player2"
+    case(AvailableOptions.ROCK, AvailableOptions.SPOCK) => "Player2"
+    case(AvailableOptions.SPOCK, AvailableOptions.ROCK) => "Player1"
+    case(AvailableOptions.PAPER, AvailableOptions.SCISSORS) => "Player2"
+    case(AvailableOptions.SCISSORS, AvailableOptions.PAPER) => "Player1"
+    case(AvailableOptions.PAPER, AvailableOptions.LIZARD) => "Player2"
+    case(AvailableOptions.LIZARD, AvailableOptions.PAPER) => "Player1"
+    case(AvailableOptions.PAPER, AvailableOptions.SPOCK) => "Player1"
+    case(AvailableOptions.SPOCK, AvailableOptions.PAPER) => "Player2"
+    case(AvailableOptions.SCISSORS, AvailableOptions.LIZARD) => "Player1"
+    case(AvailableOptions.LIZARD, AvailableOptions.SCISSORS) => "Player2"
+    case(AvailableOptions.SCISSORS, AvailableOptions.SPOCK) => "Player2"
+    case(AvailableOptions.SPOCK, AvailableOptions.SCISSORS) => "Player1"
+    case(AvailableOptions.LIZARD, AvailableOptions.SPOCK) => "Player1"
+    case(AvailableOptions.SPOCK, AvailableOptions.LIZARD) => "Player2"
     case _ => "Draw"
   }
 
@@ -41,12 +35,12 @@ class RockPaperScissors {
     readLine("Please enter 1 for rock, 2 for paper, 3 for scissors, 4 for lizard, 5 for spock\n").toInt
   }
 
-  def takeInput(choice: Int): Value = choice match {
-    case 1 => availableOptions.ROCK
-    case 2 => availableOptions.PAPER
-    case 3 => availableOptions.SCISSORS
-    case 4 => availableOptions.LIZARD
-    case 5 => availableOptions.SPOCK
+  def takeInput(choice: Int): AvailableOptions.Value = choice match {
+    case 1 => AvailableOptions.ROCK
+    case 2 => AvailableOptions.PAPER
+    case 3 => AvailableOptions.SCISSORS
+    case 4 => AvailableOptions.LIZARD
+    case 5 => AvailableOptions.SPOCK
     case _ => takeInput(askForPlayerInput)
   }
 

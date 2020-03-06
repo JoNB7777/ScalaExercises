@@ -34,4 +34,18 @@ class RockPaperScissors {
     case(Spock, Lizard) => "Player2"
   }
 
+  def askForPlayerInput: Int = {
+    println("Please enter 1 for rock, 2 for paper, 3 for scissors, 4 for lizard, 5 for spock")
+
+  }
+
+  def takePlayerInput(playerChoice: Int): availableOptions.Value = playerChoice match {
+    case 1 => availableOptions.Rock
+    case 2 => availableOptions.PaperOption
+    case 3 => availableOptions.Scissors
+    case 4 => availableOptions.Lizard
+    case 5 => availableOptions.Spock
+    case _ => takePlayerInput(askForPlayerInput)
+  }
+
 }

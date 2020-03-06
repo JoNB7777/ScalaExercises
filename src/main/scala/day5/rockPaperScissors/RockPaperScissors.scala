@@ -1,6 +1,7 @@
 package day5.rockPaperScissors
 
 import scala.io.StdIn.readLine
+import scala.util.Random
 
 
 class RockPaperScissors {
@@ -39,13 +40,21 @@ class RockPaperScissors {
     readLine("Please enter 1 for rock, 2 for paper, 3 for scissors, 4 for lizard, 5 for spock").toInt
   }
 
-  def takePlayerInput(playerChoice: Int): Value = playerChoice match {
+  def takeInput(choice: Int): Value = choice match {
     case 1 => availableOptions.ROCK
     case 2 => availableOptions.PAPER
     case 3 => availableOptions.SCISSORS
     case 4 => availableOptions.LIZARD
     case 5 => availableOptions.SPOCK
-    case _ => takePlayerInput(askForPlayerInput)
+    case _ => takeInput(askForPlayerInput)
+  }
+
+  def randomAIChoice: Int ={
+    Random.between(1, 6)
+  }
+
+  def basicAIGame: Unit = {
+
   }
 
 }

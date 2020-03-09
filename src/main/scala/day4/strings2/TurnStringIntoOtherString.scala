@@ -8,10 +8,12 @@ class TurnStringIntoOtherString {
   var charInsertions = new ListBuffer[Char]
 
   def removeCharsFromString(string1: String, string2: String): (String, String) = {
-    var newString1 = sortStringAlphabetically((string1))
-    var newString2 = sortStringAlphabetically((string2))
-    for (i <- 0 to newString1.length) {
-      if (!newString2.contains(newString1.charAt(i))) {
+    val newString1 = sortStringAlphabetically(string1)
+    val newString2 = sortStringAlphabetically(string2)
+    var stringArray1 = new Array[String](string1.length)
+    var stringArray2 = new Array[String](string2.length)
+    for (i <- 0 until stringArray1.length) {
+      if (!(newString2.contains(newString1.charAt(i)))) {
         charDeletions += newString1.charAt(i)
         newString1.replace(newString1.charAt(i).toString, "")
       }
@@ -19,14 +21,23 @@ class TurnStringIntoOtherString {
     (newString1, newString2)
   }
 
-  def insertCharacter(string1: String, string2: String): Unit = {
+  def insertCharacter(string1: String, string2: String): String = {
     var newString1 = string1
-    for (i <- 0 to string2.length) {
-      if (newString1.charAt(i)!= string2.charAt(i)) {
-       newString1 = newString1.substring(0, i) + string2.charAt(i).toString + newString1.substring(i, string1.length)
-        charInsertions += string2.charAt(i)
+    while (newString1 != string2) {
+      for (i <- 0 to string1.length) {
+        var lettersDifferent = newString1.charAt(i) != string2.charAt(i)
+        while (lettersDifferent) {
+          newString1 = newString1.substring(0, i) + string2.charAt(i).toString + newString1.substring(i, string1.length)
+          charInsertions += string2.charAt(i)
+          lettersDifferent = newString1.charAt(i) != string2.charAt(i)
+        }
+        //      if (newString1.charAt(i)!= string2.charAt(i)) {
+        //       newString1 = newString1.substring(0, i) + string2.charAt(i).toString + newString1.substring(i, string1.length)
+        //        charInsertions += string2.charAt(i)
+        //      }
       }
     }
+    newString1
   }
 
   def sortStringAlphabetically(inputString: String): String = {

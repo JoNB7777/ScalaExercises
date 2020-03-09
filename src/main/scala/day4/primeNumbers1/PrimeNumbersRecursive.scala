@@ -56,7 +56,6 @@ class PrimeNumbersRecursive {
       }
     }
     primeCounter
-
   }
 
 }

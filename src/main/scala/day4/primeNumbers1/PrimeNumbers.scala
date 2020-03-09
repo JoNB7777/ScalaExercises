@@ -7,7 +7,7 @@ class PrimeNumbers {
     for (i <- 3 to num by 2) {
       var divisor = 3
       var isPrime = true
-      while (isPrime && divisor < Math.sqrt(i.toDouble).toInt) {
+      while (isPrime && divisor <= Math.sqrt(i.toDouble).toInt) {
         if (i % divisor == 0) {
           isPrime = false
         }

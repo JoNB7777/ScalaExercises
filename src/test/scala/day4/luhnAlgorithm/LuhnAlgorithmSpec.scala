@@ -40,6 +40,4 @@ class LuhnAlgorithmSpec extends FlatSpec {
     assert(luhn.findCheckDigitOfNum(4321L) == 6)
   }
 
-
-
 }
